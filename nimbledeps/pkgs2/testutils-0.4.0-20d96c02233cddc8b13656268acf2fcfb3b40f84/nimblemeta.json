@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "metaData": {
+    "url": "https://github.com/status-im/nim-testutils",
+    "downloadMethod": "git",
+    "vcsRevision": "6d76fc5e51ce6580289e872558a3b858775e310f",
+    "files": [
+      "/testutils/fuzzing/readme.md",
+      "/testutils/helpers.nim",
+      "/testutils/fuzzing.nim",
+      "/testutils/markdown_reports.nim",
+      "/testutils/moduletests.nim",
+      "/testutils/unittests.nim",
+      "/testutils.nimble",
+      "/testutils/fuzzing/fuzzing_on_windows.md",
+      "/testutils.nim",
+      "/ntu",
+      "/testutils/readme.md",
+      "/testutils/fuzzing_engines.nim",
+      "/testutils/config.nim",
+      "/testutils/spec.nim",
+      "/testutils/nimbletasks.nim"
+    ],
+    "binaries": [
+      "ntu"
+    ],
+    "specialVersions": [
+      "0.4.0"
+    ]
+  }
+}

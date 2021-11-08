@@ -71,18 +71,17 @@
       }
     },
     "faststreams": {
-      "version": "0.3.0",
-      "vcsRevision": "1b561a9e71b6bdad1c1cdff753418906037e9d09",
+      "version": "0.2.0",
+      "vcsRevision": "99e89eb1e5c973ea5162342384408434b7f5715a",
       "url": "https://github.com/status-im/nim-faststreams",
       "downloadMethod": "git",
       "dependencies": [
         "stew",
         "testutils",
-        "chronos",
-        "unittest2"
+        "chronos"
       ],
       "checksums": {
-        "sha1": "97edf9797924af48566a0af8267203dc21d80c77"
+        "sha1": "60f51627331ec9fa88bc5fbe92749d1cb52ca95b"
       }
     },
     "serialization": {

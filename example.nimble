@@ -12,5 +12,6 @@ bin           = @["example"]
 # Dependencies
 
 requires "nim >= 1.2.0"
+requires "https://github.com/status-im/nim-faststreams#99e89eb"
 requires "https://github.com/status-im/nim-serialization#f9a1121"
-requires "https://github.com/status-im/nim-protobuf-serialization#f7d671f"
+requires "https://github.com/status-im/nim-protobuf-serialization"

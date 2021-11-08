@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "metaData": {
+    "url": "https://github.com/status-im/nim-http-utils",
+    "downloadMethod": "git",
+    "vcsRevision": "689da19e9e9cfff4ced85e2b25c6b2b5598ed079",
+    "files": [
+      "/httputils.nim",
+      "/httputils.nimble"
+    ],
+    "binaries": [],
+    "specialVersions": [
+      "0.3.0"
+    ]
+  }
+}

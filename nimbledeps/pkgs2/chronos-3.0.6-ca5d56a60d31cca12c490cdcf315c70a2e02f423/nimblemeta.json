@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "metaData": {
+    "url": "https://github.com/status-im/nim-chronos",
+    "downloadMethod": "git",
+    "vcsRevision": "df980dd71311d90d1c5661c4c6275789a3518548",
+    "files": [
+      "/chronos/transports/datagram.nim",
+      "/chronos/ioselects/ioselectors_epoll.nim",
+      "/chronos/asyncmacro2.nim",
+      "/chronos/apps/http/httpbodyrw.nim",
+      "/chronos/transports/ipnet.nim",
+      "/chronos/sendfile.nim",
+      "/chronos/srcloc.nim",
+      "/chronos/asyncfutures2.nim",
+      "/chronos/streams/boundstream.nim",
+      "/chronos/ioselects/ioselectors_select.nim",
+      "/chronos/transports/common.nim",
+      "/chronos/streams/chunkstream.nim",
+      "/chronos/transport.nim",
+      "/chronos/apps/http/shttpserver.nim",
+      "/chronos/apps/http/httpcommon.nim",
+      "/chronos/apps.nim",
+      "/chronos/transports/osnet.nim",
+      "/chronos.nimble",
+      "/chronos.nim",
+      "/chronos/streams/tlsstream.nim",
+      "/chronos/apps/http/httpagent.nim",
+      "/chronos/ioselects/ioselectors_poll.nim",
+      "/chronos/ioselects/ioselectors_kqueue.nim",
+      "/chronos/apps/http/httptable.nim",
+      "/chronos/apps/http/multipart.nim",
+      "/chronos/asyncsync.nim",
+      "/chronos/apps/http/httpserver.nim",
+      "/chronos/streams/asyncstream.nim",
+      "/chronos/selectors2.nim",
+      "/chronos/asyncloop.nim",
+      "/chronos/timer.nim",
+      "/chronos/transports/stream.nim",
+      "/chronos/handles.nim",
+      "/chronos/apps/http/httpclient.nim",
+      "/chronos/debugutils.nim"
+    ],
+    "binaries": [],
+    "specialVersions": [
+      "3.0.6"
+    ]
+  }
+}

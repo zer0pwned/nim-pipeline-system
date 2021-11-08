@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "metaData": {
+    "url": "https://github.com/status-im/nim-protobuf-serialization",
+    "downloadMethod": "git",
+    "vcsRevision": "f7d671f877e01213494aac7903421ccdbe70616f",
+    "files": [
+      "/protobuf_serialization/numbers/fixed.nim",
+      "/protobuf_serialization/internal.nim",
+      "/protobuf_serialization/pb_option.nim",
+      "/protobuf_serialization/types.nim",
+      "/protobuf_serialization/stdlib_writers.nim",
+      "/protobuf_serialization/files/proto_parser.nim",
+      "/protobuf_serialization/files/type_generator.nim",
+      "/protobuf_serialization/files/decldef.nim",
+      "/protobuf_serialization/stdlib_readers.nim",
+      "/protobuf_serialization/numbers/common.nim",
+      "/protobuf_serialization.nimble",
+      "/protobuf_serialization.nim",
+      "/protobuf_serialization/writer.nim",
+      "/protobuf_serialization/numbers/varint.nim",
+      "/protobuf_serialization/reader.nim"
+    ],
+    "binaries": [],
+    "specialVersions": [
+      "0.2.0"
+    ]
+  }
+}
