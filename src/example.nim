@@ -6,4 +6,4 @@ import examplepkg/protomodule
 
 when isMainModule:
   echo(getWelcomeMessage())
-  protoexample()
+  discard protoExample()
