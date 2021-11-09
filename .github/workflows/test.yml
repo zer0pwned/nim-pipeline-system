@@ -114,7 +114,7 @@ jobs:
       # TODO: use local deps mode and cache it.
       # TODO: remove ugly shopt/alias
       - name: Sync dependencies
-        shell: bash 
+        #shell: bash 
         run: nimble sync 
 
       - name: Run test cases
