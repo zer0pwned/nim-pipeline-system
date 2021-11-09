@@ -67,9 +67,10 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v2
         with:
-          path: example-project
+          path: ./
           submodules: false
 
+      # TODO: cache nim environment on macos as choosenim needs to compile it every time.
       - name: Setup nim environment
         uses: jiro4989/setup-nim-action@v1
         with:
@@ -81,7 +82,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.nimble/pkgs/nimble-#0a23c44c
-          key: ${{ runner.os }}-nimble-v0.14.0
+          key: ${{ matrix.target.os }}-${{ matrix.nim }}-nimble-v0.14.0
 
       - name: Setup nimble to v0.14.0 (cache missed)
         if: steps.nimble-cache.outputs.cache-hit != 'true'
@@ -93,7 +94,7 @@ jobs:
       - name: Switch back nim version & alias nimble  
         shell: bash
         run: |
-          choosenim ${{ matrix.nim }} -y
+          echo N | choosenim ${{ matrix.nim }} 
           alias nimble=~/.nimble/pkgs/nimble-#0a23c44c/nimble
           nim -v
           nimble -v 
