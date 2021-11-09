@@ -109,15 +109,24 @@ jobs:
           nimble -v 
       
       # TODO: use local deps mode and cache it.
-
+      # TODO: remove ugly shopt/alias
       - name: Sync dependencies
         shell: bash 
-        run: nimble sync 
+        run: |
+          shopt -s expand_aliases
+          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
+          nimble sync 
 
       - name: Run test cases
         shell: bash
-        run: nimble test
+        run: |
+          shopt -s expand_aliases
+          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
+          nimble test
 
       - name: Run build if binary file needed
         shell: bash
-        run: nimble build
+        run: |
+          shopt -s expand_aliases
+          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
+          nimble build
