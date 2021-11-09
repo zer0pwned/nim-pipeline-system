@@ -73,6 +73,7 @@ jobs:
       - name: restore choosenim
         id: choosenim-cache
         uses: actions/cache@v2
+        with:
           path: ~/.choosenim
           key: ${{ matrix.target.os }}-choosenim-${{ matrix.nim }}
 
