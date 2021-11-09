@@ -102,7 +102,8 @@ jobs:
         shell: bash
         run: |
           echo N | choosenim ${{ matrix.nim }} 
-          alias nimble=~/.nimble/pkgs/nimble-#0a23c44c/nimble
+          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
+          which nimble
           nim -v
           nimble -v 
       
