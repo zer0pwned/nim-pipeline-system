@@ -40,6 +40,9 @@ jobs:
           - target:
               os: windows
             builder: windows-2019
+        exclude:
+          - os: windows
+            nim: '1.2.0'
 
     name: '${{ matrix.target.os }}-${{ matrix.target.cpu }}-${{ matrix.nim }}'
     runs-on: ${{ matrix.builder }}
@@ -70,7 +73,7 @@ jobs:
           path: ./
           submodules: false
 
-      - name: restore choosenim
+      - name: Restore choosenim
         id: choosenim-cache
         uses: actions/cache@v2
         with:
