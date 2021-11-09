@@ -98,11 +98,19 @@ jobs:
           choosenim 1.6.0 -y
           nimble install https://github.com/nim-lang/nimble@#0a23c44c -y
     
-      - name: Switch back nim version & alias nimble
+      - name: Switch back nim version & alias nimble (mac & linux)
+        if: runner.os != "Windows"
         shell: bash
         run: |
           echo N | choosenim ${{ matrix.nim }} 
           echo "$HOME/.nimble/pkgs/nimble-#0a23c44c/" >> $GITHUB_PATH
+
+      # Workaround #1: nimble sync broke on Windows (checksum mismatch issue)
+      - name: Switch back nim version (windows)
+        if: runner.os == "Windows"
+        shell: bash
+        run: |
+          echo y | choosenim ${{ matrix.nim }} 
 
       - name: Check nim and nimble version
         shell: bash
@@ -112,15 +120,15 @@ jobs:
           nimble -v 
       
       # TODO: use local deps mode and cache it.
-      # TODO: remove ugly shopt/alias
-      - name: Sync dependencies
-        #shell: bash 
-        run: nimble sync 
+      - name: Sync dependencies (mac & linux)
+        if: runner.os != "Windows"
+        shell: bash 
+        run: nimble -l sync 
 
       - name: Run test cases
         shell: bash
-        run: nimble test
+        run: nimble -l test
 
       - name: Run build if binary file needed
         shell: bash
-        run: nimble build
+        run: nimble -l build
