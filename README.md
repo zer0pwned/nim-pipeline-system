@@ -8,7 +8,6 @@ Here is what we can do.
 * Leverage the up-to-date nimble to lock and sync all your dependencies.
 * See [.github/workflows/test.yml](https://github.com/zer0pwned/nim-pipeline-system/blob/main/.github/workflows/test.yml) for full example.
 
----
 
 ## Story
 
@@ -20,7 +19,6 @@ In this repository, we create a simple nimble project by running `nimble init` t
 
 The funny story is `nim-protobuf-serialization` used to work on my local project but not anymore if anyone wants to install the package freshly unless pin to certain commit. So using lock file is definitely a better option as it defines the commit of all the package dependencies. With the lock file, others or the Github Actions can easily install the correct version of all dependencies without the needs of pin every dependency of your project. 
 
----
 
 ## Typical usage
 On development machine 1
@@ -48,10 +46,13 @@ $ echo N | choosenim 1.4.8
 $ nimble sync
 ```
 
----
 
 ## Caveat
 
 So far the new nimble sync does not work on Windows due to the checksum mismatch issue. See https://github.com/zer0pwned/nim-pipeline-system/issues/1 and https://github.com/nim-lang/nimble/issues/957. 
 
 Current workaround: stick with old version nimble on Windows without sync feature.
+
+## Further Reading
+
+If you want a customized version of nimble build system where you need to modify nim source code, you should checkout [nimbus-build-system](https://github.com/status-im/nimbus-build-system) from `status-im`. They are very experienced at using nim ecosystem.
