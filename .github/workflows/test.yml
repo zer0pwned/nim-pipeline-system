@@ -75,6 +75,7 @@ jobs:
         with:
           nim-version: ${{ matrix.nim }}
 
+      # TODO: if later on we need to change nimble version we need to change the key.
       - name: Restore nimble v0.14.0 cache
         id: nimble-cache
         uses: actions/cache@v2
@@ -91,7 +92,7 @@ jobs:
     
       - name: Switch back nim version & alias nimble  
         shell: bash
-        runs: |
+        run: |
           choosenim ${{ matrix.nim }} -y
           alias nimble=~/.nimble/pkgs/nimble-#0a23c44c/nimble
           nim -v
@@ -100,10 +101,10 @@ jobs:
       # TODO: use local deps mode and cache it.
 
       - name: Sync dependencies
-        runs: nimble sync 
+        run: nimble sync 
 
       - name: Run test cases
-        runs: nimble test
+        run: nimble test
 
       - name: Run build if binary file needed
-        runs: nimble build
+        run: nimble build
