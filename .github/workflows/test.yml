@@ -70,8 +70,14 @@ jobs:
           path: ./
           submodules: false
 
-      # TODO: cache nim environment on macos as choosenim needs to compile it every time.
-      - name: Setup nim environment
+      - name: restore choosenim
+        id: choosenim-cache
+        uses: actions/cache@v2
+          path: ~/.choosenim
+          key: ${{ matrix.target.os }}-choosenim-${{ matrix.nim }}
+
+      - name: Setup nim environment 
+        if: steps.choosenim-cache.outputs.cache-hit != 'true'        
         uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim }}
@@ -102,10 +108,13 @@ jobs:
       # TODO: use local deps mode and cache it.
 
       - name: Sync dependencies
+        shell: bash 
         run: nimble sync 
 
       - name: Run test cases
+        shell: bash
         run: nimble test
 
       - name: Run build if binary file needed
+        shell: bash
         run: nimble build
