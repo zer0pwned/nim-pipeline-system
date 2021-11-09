@@ -45,24 +45,24 @@ jobs:
       runs-on: ${{ matrix.builder }}
       steps:
         - name: Get branch name
-        shell: bash
-        run: |
-          if [[ '${{  github.event_name }}' == 'pull_request' ]]; then
-            echo "##[set-output name=branch_name;]$(echo ${GITHUB_HEAD_REF})"
-            echo "Branch found (PR): ${GITHUB_HEAD_REF}"
-          else
-            echo "##[set-output name=branch_name;]$(echo ${GITHUB_REF#refs/heads/})"
-            echo "Branch found (not PR): ${GITHUB_REF#refs/heads/}"
-          fi
-        id: get_branch
+          shell: bash
+          run: |
+            if [[ '${{  github.event_name }}' == 'pull_request' ]]; then
+              echo "##[set-output name=branch_name;]$(echo ${GITHUB_HEAD_REF})"
+              echo "Branch found (PR): ${GITHUB_HEAD_REF}"
+            else
+              echo "##[set-output name=branch_name;]$(echo ${GITHUB_REF#refs/heads/})"
+              echo "Branch found (not PR): ${GITHUB_REF#refs/heads/}"
+            fi
+          id: get_branch
 
         - name: Cancel Previous Runs (except main/devel)
-        if: >
-          steps.get_branch.outputs.branch_name != 'main' &&
-          steps.get_branch.outputs.branch_name != 'develop'
-        uses: styfle/cancel-workflow-action@0.5.0
-        with:
-          access_token: ${{ github.token }}
+          if: >
+            steps.get_branch.outputs.branch_name != 'main' &&
+            steps.get_branch.outputs.branch_name != 'develop'
+          uses: styfle/cancel-workflow-action@0.5.0
+          with:
+            access_token: ${{ github.token }}
 
         - name: Checkout project
           uses: actions/checkout@v2
