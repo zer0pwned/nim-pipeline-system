@@ -41,7 +41,8 @@ jobs:
               os: windows
             builder: windows-2019
         exclude:
-          - os: windows
+          - target:
+              os: windows
             nim: '1.2.0'
 
     name: '${{ matrix.target.os }}-${{ matrix.target.cpu }}-${{ matrix.nim }}'
