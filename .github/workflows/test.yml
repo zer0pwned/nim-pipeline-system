@@ -78,7 +78,7 @@ jobs:
           key: ${{ matrix.target.os }}-choosenim-${{ matrix.nim }}
 
       - name: Setup nim environment 
-        if: steps.choosenim-cache.outputs.cache-hit != 'true'        
+        #if: steps.choosenim-cache.outputs.cache-hit != 'true'        
         uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim }}
