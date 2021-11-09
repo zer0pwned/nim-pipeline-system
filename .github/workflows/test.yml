@@ -43,9 +43,7 @@ jobs:
 
       name: '${{ matrix.target.os }}-${{ matrix.target.cpu }}-${{ matrix.nim }}'
       runs-on: ${{ matrix.builder }}
-
       steps:
-
         - name: Get branch name
         shell: bash
         run: |
