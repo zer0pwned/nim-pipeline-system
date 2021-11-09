@@ -98,12 +98,15 @@ jobs:
           choosenim 1.6.0 -y
           nimble install https://github.com/nim-lang/nimble@#0a23c44c -y
     
-      - name: Switch back nim version & alias nimble  
+      - name: Switch back nim version & alias nimble
         shell: bash
         run: |
           echo N | choosenim ${{ matrix.nim }} 
-          shopt -s expand_aliases
-          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
+          echo "$HOME/.nimble/pkgs/nimble-#0a23c44c/" >> $GITHUB_PATH
+
+      - name: Check nim and nimble version
+        shell: bash
+        run: |
           which nimble
           nim -v
           nimble -v 
@@ -112,21 +115,12 @@ jobs:
       # TODO: remove ugly shopt/alias
       - name: Sync dependencies
         shell: bash 
-        run: |
-          shopt -s expand_aliases
-          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
-          nimble sync 
+        run: nimble sync 
 
       - name: Run test cases
         shell: bash
-        run: |
-          shopt -s expand_aliases
-          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
-          nimble test
+        run: nimble test
 
       - name: Run build if binary file needed
         shell: bash
-        run: |
-          shopt -s expand_aliases
-          alias nimble="~/.nimble/pkgs/nimble-#0a23c44c/nimble"
-          nimble build
+        run: nimble build
