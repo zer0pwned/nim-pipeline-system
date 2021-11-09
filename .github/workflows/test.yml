@@ -99,7 +99,7 @@ jobs:
           nimble install https://github.com/nim-lang/nimble@#0a23c44c -y
     
       - name: Switch back nim version & alias nimble (mac & linux)
-        if: runner.os != "Windows"
+        if: runner.os != 'Windows'
         shell: bash
         run: |
           echo N | choosenim ${{ matrix.nim }} 
@@ -107,7 +107,7 @@ jobs:
 
       # Workaround #1: nimble sync broke on Windows (checksum mismatch issue)
       - name: Switch back nim version (windows)
-        if: runner.os == "Windows"
+        if: runner.os == 'Windows'
         shell: bash
         run: |
           echo y | choosenim ${{ matrix.nim }} 
@@ -121,7 +121,7 @@ jobs:
       
       # TODO: use local deps mode and cache it.
       - name: Sync dependencies (mac & linux)
-        if: runner.os != "Windows"
+        if: runner.os != 'Windows'
         shell: bash 
         run: nimble -l sync 
 
