@@ -113,12 +113,12 @@ jobs:
       - name: Sync dependencies (mac & linux)
         if: runner.os != 'Windows'
         shell: bash 
-        run: nimble -l sync 
+        run: echo y | nimble -l sync 
 
       - name: Run test cases
         shell: bash
-        run: nimble -l test
+        run: echo y | nimble -l test
 
       - name: Run build if binary file needed
         shell: bash
-        run: nimble -l build
+        run: echo y | nimble -l build
