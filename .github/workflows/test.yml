@@ -95,13 +95,19 @@ jobs:
           path: ~/.nimble/pkgs/nimble-#${{ matrix.nimble }}
           key: ${{ matrix.target.os }}-${{ matrix.nim }}-nimble-${{ matrix.nimble }}
     
-      - name: Switch nimble to v0.14.0 
+      - name: Switch nimble to v0.14.0 (cache missed)
         if: steps.nimble-cache.outputs.cache-hit != 'true'
         shell: bash
         run: |
           choosenim 1.6.2 -y
           nimble install https://github.com/nim-lang/nimble@#${{ matrix.nimble }} -y
           echo N | choosenim ${{ matrix.nim }} 
+          echo "$HOME/.nimble/pkgs/nimble-#${{ matrix.nimble }}/" >> $GITHUB_PATH
+
+      - name: Switch nimble to v0.14.0 (cached)
+        if: steps.nimble-cache.outputs.cache-hit == 'true'
+        shell: bash
+        run: |
           echo "$HOME/.nimble/pkgs/nimble-#${{ matrix.nimble }}/" >> $GITHUB_PATH
 
       - name: Check nim and nimble version
