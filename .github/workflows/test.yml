@@ -46,7 +46,7 @@ jobs:
               os: windows
             nim: '1.2.0'
 
-    name: '${{ matrix.target.os }}-${{ matrix.target.cpu }}-${{ matrix.nim }}'
+    name: '${{ matrix.target.os }}-${{ matrix.target.cpu }}-${{ matrix.nimble }}'
     runs-on: ${{ matrix.builder }}
     steps:
       - name: Get branch name
