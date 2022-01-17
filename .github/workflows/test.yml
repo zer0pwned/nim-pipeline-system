@@ -96,6 +96,7 @@ jobs:
           key: ${{ matrix.target.os }}-${{ matrix.nim }}-nimble-${{ matrix.nimble }}
     
       - name: Switch nimble to v0.14.0 
+        if: steps.nimble-cache.outputs.cache-hit != 'true'
         shell: bash
         run: |
           choosenim 1.6.2 -y
