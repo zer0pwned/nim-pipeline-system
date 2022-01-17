@@ -24,9 +24,9 @@ The funny story is `nim-protobuf-serialization` used to work on my local project
 On development machine 1
 
 ```
-$ choosenim 1.6.0
+$ choosenim 1.6.2
 $ nimble install https://github.com/nim-lang/nimble@#head
-# In case you want to use 1.4.6 instead
+# In case you want to use 1.4.8 instead
 # Do not override your new nimble file!!
 $ echo N | choosenim 1.4.8 
 $ nimble init
@@ -37,21 +37,14 @@ $ nimble lock
 
 On development machine 2 or on Github Action
 ```
-$ choosenim 1.6.0
+$ choosenim 1.6.2
 $ nimble install https://github.com/nim-lang/nimble@#head
-# In case you want to use 1.4.6 instead
+# In case you want to use 1.4.8 instead
 # Do not override your new nimble file!!
 $ echo N | choosenim 1.4.8 
 # use nimble -l sync if you want to store dep locally
 $ nimble sync
 ```
-
-
-## Caveat
-
-So far the new nimble sync does not work on Windows due to the checksum mismatch issue. See https://github.com/zer0pwned/nim-pipeline-system/issues/1 and https://github.com/nim-lang/nimble/issues/957. 
-
-Current workaround: stick with old version nimble on Windows without sync feature.
 
 ## Further Reading
 
