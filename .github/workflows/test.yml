@@ -29,7 +29,8 @@ jobs:
             cpu: amd64
           - os: windows
             cpu: amd64
-        nim: ['1.2.0', '1.4.8', '1.6.0']
+        nim: ['1.2.0', '1.4.8', '1.6.2']
+        nimble: ['519bb2b']
         include:
           - target:
               os: linux
@@ -91,18 +92,16 @@ jobs:
         id: nimble-cache
         uses: actions/cache@v2
         with:
-          path: ~/.nimble/pkgs/nimble-#0a23c44c
-          key: ${{ matrix.target.os }}-${{ matrix.nim }}-nimble-v0.14.0
+          path: ~/.nimble/pkgs/nimble-#${{ matrix.nimble }}
+          key: ${{ matrix.target.os }}-${{ matrix.nim }}-nimble-${{ matrix.nimble }}
     
-      - name: Switch nimble to v0.14.0 (mac & linux)
-        if: runner.os != 'Windows' 
-        # steps.nimble-cache.outputs.cache-hit != 'true'  
+      - name: Switch nimble to v0.14.0 
         shell: bash
         run: |
-          choosenim 1.6.0 -y
-          nimble install https://github.com/nim-lang/nimble@#0a23c44c -y
+          choosenim 1.6.2 -y
+          nimble install https://github.com/nim-lang/nimble@#${{ matrix.nimble }} -y
           echo N | choosenim ${{ matrix.nim }} 
-          echo "$HOME/.nimble/pkgs/nimble-#0a23c44c/" >> $GITHUB_PATH
+          echo "$HOME/.nimble/pkgs/nimble-#${{ matrix.nimble }}/" >> $GITHUB_PATH
 
       - name: Check nim and nimble version
         shell: bash
@@ -112,10 +111,7 @@ jobs:
           nimble -v 
       
       # TODO: use local deps mode and cache it.
-      # Workaround #1: nimble sync broke on Windows (checksum mismatch issue)
-      # Stick with old version nimble for now.
-      - name: Sync dependencies (mac & linux)
-        if: runner.os != 'Windows'
+      - name: Sync dependencies 
         shell: bash 
         run: echo y | nimble -l sync 
 
